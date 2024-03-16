@@ -1,0 +1,87 @@
+//Cоздаем по 2 enum с разным типом RawValue
+enum Fruits: String {
+    case apple, orange, lemon, grape, chasteberry, blueberry, blackberry  
+}
+
+enum Light: Int {
+    case on = 1
+    case off = 0
+}
+
+//Создаем несколько enum для заполнения полей стркутуры - анкета сотрудника
+enum Gender: String {
+    case male
+    case female
+}
+
+enum Age: String {
+    case young, middleAged, old
+}
+
+enum ExperienceLevel: String {
+    case junior, middle, senior
+}
+
+// Создаем enum со всеми цветами радуги
+enum Rainbow_color: String {
+    case red, orange, yellow, green, blue, indigo, violet
+}
+
+
+//Создаем функцию, которая содержит массив разных case'ов enum и выводит содержимое в консоль
+func enum_cases() {
+    let fruits: [Fruits] = [.apple, .orange, .lemon]
+    let colors: [Rainbow_color] = [.red, .orange, .yellow]
+    for fruit in fruits {
+        for color in colors {
+            print("\(fruit.rawValue) \(color.rawValue)")
+        }
+    }
+}
+
+enum_cases()
+
+
+//Создаем функцию, которая выставляет оценки ученикам в школе
+enum Mark: String {
+    case Отл
+    case Хор
+    case Удовл
+    case Неуд
+    case Не_был
+}
+
+func put_mark(mark: Mark) -> Int {
+    switch mark {
+    case .Отл: return 5
+    case .Хор: return 4
+    case .Удовл: return 3
+    case .Неуд: return 2
+    case .Не_был: return 0
+    }
+}
+
+let student_mark: Mark = .Хор
+let student_mark_number = put_mark(mark: student_mark)
+print("\nStudent's mark is \(student_mark_number)")
+
+
+//Создаем метод, которая выводит в консоль какие автомобили стоят в гараже
+enum Car_type: String {
+    case Reno, BMW, Supra, Mersedes
+}
+
+struct Garage {
+    var cars: [Car_type]
+    
+    func list_of_cars() {
+        print("\nCars in the garage:")
+        for car in cars {
+            print("\(car.rawValue)")
+        }
+    }
+}
+
+let my_garage = Garage(cars: [.Reno, .BMW, .Supra, .Mersedes])
+my_garage.list_of_cars()
+
